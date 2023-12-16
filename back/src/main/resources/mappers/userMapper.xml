@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kot.model.dao.UserDao">
+
+	<insert id="signUp" parameterType="User">
+		INSERT INTO user
+		VALUES (0, #{name}, #{loginId}, #{pass}, #{email},
+			CASE 
+   			 WHEN LENGTH(#{phone}) = 11 THEN CONCAT(SUBSTRING(#{phone}, 1, 3), '-', SUBSTRING(#{phone}, 4, 4), '-', SUBSTRING(#{phone}, 8, 4))
+   			 WHEN LENGTH(#{phone}) = 13 THEN #{phone}
+   			 END
+		, #{gender}, #{age}, #{address}, now(), 1000, false)
+	</insert>
+	
+	<select id="checkId" resultType="User">
+		SELECT user_name as name
+		FROM user
+		where user_name = #{name}
+	</select>
+	
+	<select id="checkPhone" resultType="User">
+		SELECT user_phone as phone
+		FROM user
+		where user_phone=CASE 
+   			 WHEN LENGTH(#{phone}) = 11 THEN CONCAT(SUBSTRING(#{phone}, 1, 3), '-', SUBSTRING(#{phone}, 4, 4), '-', SUBSTRING(#{phone}, 8, 4))
+   			 WHEN LENGTH(#{phone}) = 13 THEN #{phone}
+   			 END
+	</select>
+	
+	<select id="logIn" parameterType="User" resultType="User">
+		SELECT user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		FROM user
+		WHERE user_loginId=#{loginId} and user_pass=#{pass}
+	</select>
+	
+	<select id="searchUser" parameterType="String" resultType="User">
+		SELECT user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		FROM user
+		WHERE user_name LIKE concat('%', #{search}, '%')
+	</select>
+	
+</mapper>

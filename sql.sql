@@ -1,4 +1,15 @@
-﻿CREATE TABLE `User` (
+DROP DATABASE IF EXISTS kot;
+CREATE DATABASE kot;
+
+USE kot;
+
+DROP TABLE IF EXISTS `User`;
+DROP TABLE IF EXISTS `MatchResult`;
+DROP TABLE IF EXISTS `match_wait`;
+DROP TABLE IF EXISTS `Board`;
+DROP TABLE IF EXISTS `Reply`;
+
+CREATE TABLE `User` (
 	`userId`	int	NOT NULL,
 	`name`	VARCHAR(30)	NOT NULL,
 	`loginId`	VARCHAR(30)	NOT NULL,
@@ -27,7 +38,7 @@ CREATE TABLE `MatchResult` (
 CREATE TABLE `match_wait` (
 	`matchId`	int	NOT NULL,
 	`userId`	int	NOT NULL,
-	`sender`	VARCAHAR(30)	NOT NULL,
+	`sender`	VARCHAR(30)	NOT NULL,
 	`receiver`	VARCHAR(30)	NOT NULL,
 	`status`	boolean	NOT NULL,
 	`match`	boolean	NOT NULL,
@@ -48,7 +59,7 @@ CREATE TABLE `Reply` (
 	`replyId`	int	NOT NULL,
 	`boardId`	int	NOT NULL,
 	`userId`	int	NOT NULL,
-	`content`	VARCAHR(500)	NOT NULL,
+	`content`	VARCHAR(500)	NOT NULL,
 	`regdate`	datetime	NOT NULL,
 	`delstatus`	boolean	NOT NULL
 );
