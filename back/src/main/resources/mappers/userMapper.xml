@@ -41,4 +41,16 @@
 		WHERE user_name LIKE concat('%', #{search}, '%')
 	</select>
 	
+	<update id="updatePass" parameterType="User">
+		UPDATE user
+		SET user_pass = #{pass}
+		WHERE user_loginId = #{loginId}
+	</update>
+	
+	<update id="updateRate" parameterType="User">
+		UPDATE user
+		SET user_rate = #{rate}
+		WHERE user_loginId = #{loginId}
+	</update>
+	
 </mapper>

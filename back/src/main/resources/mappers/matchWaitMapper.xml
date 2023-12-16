@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kot.model.dao.MatchWaitDao">
+
+	<insert id="sendWait" parameterType="MatchWait">
+		INSERT INTO MatchWait
+		VALUES (0, #{userId}, #{sender}, #{receiver}, false, false, now())
+	</insert>
+	
+	<update id="acceptWait" parameterType="MatchWait">
+		UPDATE user
+		SET user_status = true
+		WHERE user_loginId = #{receiver} or user_loginId = #{sender}
+	</update>
+	
+	<update id="start" parameterType="MatchWait">
+		UPDATE MatchWait
+		SET matchWait_match = true
+		WHERE matchWait_receiver=#{receiver} and matchWait_sender=#{sender}
+	</update>
+	
+	<update id="deleteAll" parameterType="MatchWait">
+		UPDATE MatchWait
+		SET matchWait_status = true
+		WHERE matchWait_receiver=#{receiver} or matchWait_sender=#{sender}
+	</update>
+	
+	<select id="received" resultType="MatchWait" parameterType="String">
+		SELECT matchWait_receiver as receiver, matchWait_sender as sender, matchWait_mdate as mdate
+		
+	</select>
+
+</mapper>

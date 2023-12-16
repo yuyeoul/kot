@@ -83,10 +83,17 @@ public class UserRestController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
-	@PutMapping("/updateser")
-	@ApiOperation(value = "유저 정보 업데이트")
-	public ResponseEntity<?> updateUser(@RequestBody User user) {
-		userService.updateUser(user.getLoginId());
+	@PutMapping("/updatepass")
+	@ApiOperation(value = "유저 비밀번호 업데이트")
+	public ResponseEntity<?> updatePass(@RequestBody User user) {
+		userService.updatePass(user.getLoginId());
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	@PutMapping("updateRate")
+	@ApiOperation(value = "유저 점수 업데이트")
+	public ResponseEntity<?> updateRate(@RequestBody User user) {
+		userService.updateRate(user.getLoginId());
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 }

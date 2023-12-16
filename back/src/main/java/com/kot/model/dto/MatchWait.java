@@ -7,7 +7,7 @@ public class MatchWait {
 	private int userId;
 	private String sender;
 	private String receiver;
-	private boolean status;
+	private boolean status; //
 	private boolean match;
 	private Date mdate;
 	

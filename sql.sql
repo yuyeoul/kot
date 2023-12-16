@@ -35,7 +35,7 @@ CREATE TABLE `MatchResult` (
 	`result`	VARCHAR(30)	NULL
 );
 
-CREATE TABLE `match_wait` (
+CREATE TABLE `matchwait` (
 	`matchId`	int	NOT NULL,
 	`userId`	int	NOT NULL,
 	`sender`	VARCHAR(30)	NOT NULL,
