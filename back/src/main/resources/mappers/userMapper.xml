@@ -41,6 +41,24 @@
 		WHERE user_name LIKE concat('%', #{search}, '%')
 	</select>
 	
+	<select id="selectMale" resultType="User">
+		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		FROM user
+		WHERE user_gender="남자"
+	</select>
+	
+	<select id="selectFemale" resultType="User">
+		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		FROM user
+		WHERE user_gender="여자"
+	</select>
+	
+	<select id="selectUser" resultType="User">
+		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, user_id as id,user_loginId as loginId,user_phone as phone,user_address as address, user_age as age,user_gender as gender,user_name as name, user_rate as rate, user_status as status
+		FROM user
+		where user_gender=#{gender} and user_loginId=#{loginId}
+	</select>
+	
 	<update id="updatePass" parameterType="User">
 		UPDATE user
 		SET user_pass = #{pass}
