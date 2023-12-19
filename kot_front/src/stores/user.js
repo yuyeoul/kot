@@ -16,7 +16,7 @@ export const useUserStore = defineStore('user', () => {
 
   const male = ref([])
   const getMaleUser = function () {
-    axios.get(REST_USER_API+"/musers")
+    axios.get(REST_USER_API+"/male")
       .then((response) => {
       male.value = response.data
     })
@@ -24,7 +24,7 @@ export const useUserStore = defineStore('user', () => {
 
   const female = ref([])
   const getFemaleUser = function () {
-    axios.get(REST_USER_API+"/fusers")
+    axios.get(REST_USER_API+"/female")
       .then((response) => {
       female.value = response.data
     })

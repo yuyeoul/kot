@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kot.model.dao.UserDao">
 
 	<insert id="signUp" parameterType="User">
@@ -42,19 +42,19 @@
 	</select>
 	
 	<select id="selectMale" resultType="User">
-		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
+		SELECT RANK() OVER(ORDER BY rate DESC) AS ranking, userId, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user
 		WHERE gender="남자"
 	</select>
 	
 	<select id="selectFemale" resultType="User">
-		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
+		SELECT RANK() OVER(ORDER BY rate DESC) AS ranking, userId, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user
-		WHERE user_gender="여자"
+		WHERE gender="여자"
 	</select>
 	
 	<select id="selectUser" resultType="User">
-		SELECT * FROM(SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
+		SELECT * FROM(SELECT RANK() OVER(ORDER BY rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user where gender=#{gender}) a
         where loginId=#{loginId}
 	</select>

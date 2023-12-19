@@ -43,12 +43,12 @@ const isLogin = () => {
   login.value = localStorage.getItem('loginUser') == null;
 };
 const logout = () => {
-	axios.get("http://localhost:8080/user/logout")
-    .then(() => {
+	// axios.get("http://localhost:8080/user/logout")
+  //   .then(() => {
       localStorage.removeItem('loginUser');
       router.push('/').then(() => {
         location.reload();
-      });
+      // });
     })
     .catch(error => {
       console.error("Logout failed:", error);
