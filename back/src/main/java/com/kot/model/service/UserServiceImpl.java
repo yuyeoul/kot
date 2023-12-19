@@ -24,12 +24,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean checkId(String id) {
+	public User checkId(String id) {
 		return userDao.checkId(id);
 	}
 
 	@Override
-	public boolean checkPhone(String phone) {
+	public User checkPhone(String phone) {
 		return userDao.checkPhone(phone);
 	}
 

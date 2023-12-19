@@ -37,15 +37,15 @@ public class UserRestController {
 	@GetMapping("/checkid/{id}")
 	@ApiOperation(value = "아이디 중복 체크")
 	public ResponseEntity<?> checkId(@PathVariable String id) {
-		boolean dupli = userService.checkId(id);
-		return new ResponseEntity<>(dupli, HttpStatus.OK);
+		User dupli = userService.checkId(id);
+		return new ResponseEntity<User>(dupli, HttpStatus.OK);
 	}
 	
 	@GetMapping("/checkphone/{phone}")
 	@ApiOperation(value = "핸드폰번호 중복 체크")
 	public ResponseEntity<?> checkPhone(@PathVariable String phone) {
-		boolean dupli = userService.checkId(phone);
-		return new ResponseEntity<>(dupli, HttpStatus.OK);
+		User dupli = userService.checkId(phone);
+		return new ResponseEntity<User>(dupli, HttpStatus.OK);
 	}
 	
 	@PostMapping("/login")

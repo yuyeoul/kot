@@ -7,8 +7,8 @@ import com.kot.model.dto.User;
 public interface UserDao {
 	//회원가입
 	int signUp(User user);
-	boolean checkId(String id);
-	boolean checkPhone(String phone);
+	User checkId(String id);
+	User checkPhone(String phone);
 	//로그인
 	User logIn(User user);
 	//검색
