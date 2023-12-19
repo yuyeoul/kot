@@ -34,14 +34,14 @@ public class UserRestController {
 		return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/check/{id}")
+	@GetMapping("/checkid/{id}")
 	@ApiOperation(value = "아이디 중복 체크")
 	public ResponseEntity<?> checkId(@PathVariable String id) {
 		boolean dupli = userService.checkId(id);
 		return new ResponseEntity<>(dupli, HttpStatus.OK);
 	}
 	
-	@GetMapping("/check/{phone}")
+	@GetMapping("/checkphone/{phone}")
 	@ApiOperation(value = "핸드폰번호 중복 체크")
 	public ResponseEntity<?> checkPhone(@PathVariable String phone) {
 		boolean dupli = userService.checkId(phone);
