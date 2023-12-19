@@ -97,7 +97,7 @@ const idCheckResult = ref({
     id: ""
 })
 const idCheck = function (newId) {
-    axios.get("http://localhost:8080/user/"+newId).then((response) => {
+    axios.get("http://localhost:8080/user/checkid/"+newId).then((response) => {
         console.log(response.data)
         if (response.data.length == 0) {
             // OK
@@ -117,7 +117,7 @@ const phoneCheckResult = ref({
     phone: ""
 })
 const phoneCheck = function (newPhone) {
-    axios.get("http://localhost:8080/user/check/"+newPhone).then((response) => {
+    axios.get("http://localhost:8080/user/checkphone/"+newPhone).then((response) => {
         if (response.data.length == 0) {
             alert("사용 가능한 핸드폰 번호입니다.")
             phoneCheckResult.value.boolean = true;
