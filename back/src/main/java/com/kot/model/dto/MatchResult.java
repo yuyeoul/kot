@@ -1,4 +1,4 @@
-package com.kot.model.dto;
+  package com.kot.model.dto;
 
 import java.util.Date;
 

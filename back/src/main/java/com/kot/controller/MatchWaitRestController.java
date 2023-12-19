@@ -59,7 +59,7 @@ public class MatchWaitRestController {
 	@ApiOperation(value = "매칭 시작(matchResult에 insert)")
 	public ResponseEntity<?> insertMatch(@RequestBody MatchWait wait) {
 		int result = matchWaitService.insertMatch(wait);
-		return new ResponseEntity<Integer>(result, HttpStatus.OK);
+		return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/delete")

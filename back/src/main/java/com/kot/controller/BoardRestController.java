@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kot.model.dto.Board;
-import com.kot.model.dto.User;
 import com.kot.model.service.BoardService;
 
 import io.swagger.annotations.Api;

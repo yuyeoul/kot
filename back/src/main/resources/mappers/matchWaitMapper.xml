@@ -23,7 +23,7 @@
 	
 	<update id="startMatch" parameterType="MatchWait">
 		UPDATE user
-		SET user_status = true
+		SET status = true
 		WHERE loginId=#{sender} or loginId=#{receiver}
 	</update>
 	
