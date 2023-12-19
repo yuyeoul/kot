@@ -14,13 +14,14 @@ public class User {
 	private String address;
 	private Date regDate;
 	private int rate;
+	private int ranking;
 	private boolean status;
 	
 	public User() {
 	};
 	
 	public User(int userId, String name, String loginId, String pass, String email, String phone, String gender,
-			String age, String address, Date regDate, int rate, boolean status) {
+			String age, String address, Date regDate, int rate, int ranking, boolean status) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -33,6 +34,7 @@ public class User {
 		this.address = address;
 		this.regDate = regDate;
 		this.rate = rate;
+		this.ranking = ranking;
 		this.status = status;
 	}
 
@@ -122,6 +124,14 @@ public class User {
 
 	public void setRate(int rate) {
 		this.rate = rate;
+	}
+
+	public int getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
 	}
 
 	public boolean isStatus() {
