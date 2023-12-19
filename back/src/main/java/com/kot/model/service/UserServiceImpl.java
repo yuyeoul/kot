@@ -63,8 +63,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User updatePass(String id) {
-		return userDao.updatePass(id);
+	public void updatePass(User user) {
+		userDao.updatePass(user);
 	}
 	
 	@Override

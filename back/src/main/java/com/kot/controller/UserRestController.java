@@ -44,7 +44,7 @@ public class UserRestController {
 	@GetMapping("/checkphone/{phone}")
 	@ApiOperation(value = "핸드폰번호 중복 체크")
 	public ResponseEntity<?> checkPhone(@PathVariable String phone) {
-		User dupli = userService.checkId(phone);
+		User dupli = userService.checkPhone(phone);
 		return new ResponseEntity<User>(dupli, HttpStatus.OK);
 	}
 	
@@ -86,8 +86,8 @@ public class UserRestController {
 	@PutMapping("/updatepass")
 	@ApiOperation(value = "유저 비밀번호 업데이트")
 	public ResponseEntity<?> updatePass(@RequestBody User user) {
-		userService.updatePass(user.getLoginId());
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		userService.updatePass(user);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 	@PutMapping("updateRate")

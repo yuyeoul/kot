@@ -19,7 +19,7 @@ public interface UserDao {
 	//회원 정보 출력
 	User selectUser(String id);
 	//회원 정보 수정
-	User updatePass(String id);
+	int updatePass(User user);
 	//점수 업데이트
 	User updateRate(String id);
 }

@@ -45,7 +45,7 @@ const checkNowPass=function(){
     }
     console.log(userInfo.pass)
     if(nowPass.value==JSON.parse(localStorage.getItem('loginUser')).pass){
-            axios.put('http://localhost:8080/user/upass',userInfo).then()
+            axios.put('http://localhost:8080/user/updatepass',userInfo).then()
             alert("비밀번호 변경이 완료 되었습니다.")
             logout();
     }else{

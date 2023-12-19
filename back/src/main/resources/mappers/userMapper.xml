@@ -15,9 +15,9 @@
 	</insert>
 	
 	<select id="checkId" resultType="User">
-		SELECT name
+		SELECT loginId
 		FROM user
-		where name = #{name}
+		where loginId = #{loginId}
 	</select>
 	
 	<select id="checkPhone" resultType="User">
