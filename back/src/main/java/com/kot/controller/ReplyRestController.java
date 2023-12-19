@@ -20,7 +20,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/reply")
 @Api(tags = "reply controller")
 public class ReplyRestController {
 

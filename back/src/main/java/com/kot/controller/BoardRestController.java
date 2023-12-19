@@ -57,7 +57,7 @@ public class BoardRestController {
 	
 	@GetMapping("{boardId}")
 	@ApiOperation(value = "게시글 한개 조회 ")
-	public ResponseEntity<?> oneBoard(@PathVariable String boardId) {
+	public ResponseEntity<?> oneBoard(@PathVariable int boardId) {
 		Board board = boardService.oneboard(boardId);
 		return new ResponseEntity<Board>(board, HttpStatus.OK);
 	}

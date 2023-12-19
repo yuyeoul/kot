@@ -36,8 +36,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public Board oneboard(String boardId) {
+	public Board oneboard(int boardId) {
 		// TODO Auto-generated method stub
+		boardDao.addViewCnt(boardId);
 		return boardDao.oneboard(boardId);
 	}
 

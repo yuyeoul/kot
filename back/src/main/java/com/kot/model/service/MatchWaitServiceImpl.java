@@ -25,7 +25,12 @@ public class MatchWaitServiceImpl implements MatchWaitService {
 		// TODO Auto-generated method stub
 		matchWaitDao.acceptWait(wait);
 	}
-
+	
+	@Override
+	public void deleteAllWait(String loginId) {
+		matchWaitDao.deleteAllWait(loginId);
+	}
+	
 	@Override
 	public void startMatch(MatchWait wait) {
 		// TODO Auto-generated method stub
@@ -33,8 +38,8 @@ public class MatchWaitServiceImpl implements MatchWaitService {
 	}
 	
 	@Override
-	public void deleteAllWait(MatchWait wait) {
-		matchWaitDao.deleteAllWait(wait);
+	public int insertMatch(MatchWait wait) {
+		return matchWaitDao.insertMatch(wait);
 	}
 
 	@Override

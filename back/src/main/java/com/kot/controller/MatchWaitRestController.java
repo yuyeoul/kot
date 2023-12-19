@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,24 +35,31 @@ public class MatchWaitRestController {
 	}
 	
 	@PutMapping("/accept")
-	@ApiOperation(value = "받은 매칭 수락하기(user status 변경)")
+	@ApiOperation(value = "신청 수락하기(match=true로 만들기)")
 	public ResponseEntity<?> acceptWait(@RequestBody MatchWait wait) {
 		matchWaitService.acceptWait(wait);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@PostMapping("/start")
-	@ApiOperation(value = "실제 매칭 시작(matchResult에 등록)")
+	@PutMapping("/deleteAll/{loginId}")
+	@ApiOperation(value = "남아있는 매칭 모두 삭제")
+	public ResponseEntity<?> deleteAllWait(@PathVariable String loginId) {
+		matchWaitService.deleteAllWait(loginId);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@PutMapping("/start")
+	@ApiOperation(value = "매칭 시작(user_status=true로 만들기)")
 	public ResponseEntity<?> startMatch(@RequestBody MatchWait wait) {
 		matchWaitService.startMatch(wait);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@PutMapping("/deleteAll")
-	@ApiOperation(value = "남아있는 매칭 모두 삭제")
-	public ResponseEntity<?> deleteAllWait(@RequestBody MatchWait wait) {
-		matchWaitService.deleteAllWait(wait);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+	@PostMapping("/insert")
+	@ApiOperation(value = "매칭 시작(matchResult에 insert)")
+	public ResponseEntity<?> insertMatch(@RequestBody MatchWait wait) {
+		int result = matchWaitService.insertMatch(wait);
+		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
 	@PutMapping("/delete")

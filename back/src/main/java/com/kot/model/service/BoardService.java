@@ -14,7 +14,7 @@ public interface BoardService {
 		//게시글 전체 조회 
 		List<Board> totalBoard();
 		//게시글 하나 조회 
-		Board oneboard(String boardId);
+		Board oneboard(int boardId);
 		//게시글 검색 
 		List<Board> searchBoard(String search);
 }

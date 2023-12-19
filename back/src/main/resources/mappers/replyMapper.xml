@@ -9,7 +9,7 @@
 		WHERE boardId = #{boardId}
 	</select>
 
-	<insert id="allReply" parameterType="Reply">
+	<insert id="writeReply" parameterType="Reply">
 		INSERT INTO reply
 		VALUES (0, #{boardId}, #{userId}, #{content}, now(), false)
 	</insert>

@@ -15,60 +15,60 @@
 	</insert>
 	
 	<select id="checkId" resultType="User">
-		SELECT user_name as name
+		SELECT name
 		FROM user
-		where user_name = #{name}
+		where name = #{name}
 	</select>
 	
 	<select id="checkPhone" resultType="User">
-		SELECT user_phone as phone
+		SELECT phone
 		FROM user
-		where user_phone=CASE 
+		where phone=CASE 
    			 WHEN LENGTH(#{phone}) = 11 THEN CONCAT(SUBSTRING(#{phone}, 1, 3), '-', SUBSTRING(#{phone}, 4, 4), '-', SUBSTRING(#{phone}, 8, 4))
    			 WHEN LENGTH(#{phone}) = 13 THEN #{phone}
    			 END
 	</select>
 	
 	<select id="logIn" parameterType="User" resultType="User">
-		SELECT user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		SELECT *
 		FROM user
-		WHERE user_loginId=#{loginId} and user_pass=#{pass}
+		WHERE loginId=#{loginId} and pass=#{pass}
 	</select>
 	
 	<select id="searchUser" parameterType="String" resultType="User">
-		SELECT user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		SELECT *
 		FROM user
-		WHERE user_name LIKE concat('%', #{search}, '%')
+		WHERE name LIKE concat('%', #{search}, '%')
 	</select>
 	
 	<select id="selectMale" resultType="User">
-		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user
-		WHERE user_gender="남자"
+		WHERE gender="남자"
 	</select>
 	
 	<select id="selectFemale" resultType="User">
-		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, user_id as id, user_pass as pass, user_loginId as loginId, user_phone as phone, user_address as address, user_age as age, user_gender as gender, user_name as name, user_rate as rate, user_status as status
+		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user
 		WHERE user_gender="여자"
 	</select>
 	
 	<select id="selectUser" resultType="User">
-		SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, user_id as id,user_loginId as loginId,user_phone as phone,user_address as address, user_age as age,user_gender as gender,user_name as name, user_rate as rate, user_status as status
-		FROM user
-		where user_gender=#{gender} and user_loginId=#{loginId}
+		SELECT * FROM(SELECT RANK() OVER(ORDER BY user_rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
+		FROM user where gender=#{gender}) a
+        where loginId=#{loginId}
 	</select>
 	
 	<update id="updatePass" parameterType="User">
 		UPDATE user
-		SET user_pass = #{pass}
-		WHERE user_loginId = #{loginId}
+		SET pass = #{pass}
+		WHERE loginId = #{loginId}
 	</update>
 	
 	<update id="updateRate" parameterType="User">
 		UPDATE user
-		SET user_rate = #{rate}
-		WHERE user_loginId = #{loginId}
+		SET rate = #{rate}
+		WHERE loginId = #{loginId}
 	</update>
 	
 </mapper>
