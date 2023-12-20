@@ -11,7 +11,7 @@ public interface MatchWaitDao {
 	//1.match를 true로 만들어주기
 	int acceptWait(MatchWait wait);
 	//2.status도 들어와있던 매칭 모두에 대해 true로 만들어주기(=delstatus)
-	int deleteAllWait(String loginId);
+	int deleteAllWait(MatchWait wait);
 	//3.user_status도 true로 만들어주기(이걸 통해 다른 사람이 나한테 매칭을 보내지 못하도록 한다)
 	int startMatch(MatchWait wait);
 	//4.matchResult table에 insert 해주기

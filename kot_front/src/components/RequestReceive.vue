@@ -46,37 +46,39 @@ const matchSuccess = function (receive) {
 
     const loginUserId = JSON.parse(localStorage.getItem('loginUser')).loginId
 
-    axios.put("http://localhost:8080/wait", match).then((res) => {
+    axios.put("http://localhost:8080/matchwait/accept", match).then((res) => {
         alert("매칭이 수락되었습니다.");
 
         // delete
-        axios.delete("http://localhost:8080/wait/"+loginUserId).then((delres) => {
+        axios.put("http://localhost:8080/matchwait/deleteAll",match).then((delres) => {
 
         })
-        axios.put("http://localhost:8080/wait/start", match).then((ress)=>{
-            
+        axios.put("http://localhost:8080/matchwait/start", match).then((ress)=>{
+                
         })
 
     })
 
     const result = {
+        matchId:receive.matchId,
         user1: receive.receiver,
         user2: receive.sender,
         matchDate: new Date(),
-        user1Phone: receive.user1Phone,
-        user2Phone: receive.user2Phone,
-        user1Name: receive.receiverName,
-        user2Name: receive.senderName,
+       
     }
 
-    axios.post("http://localhost:8080/result", result).then((insres) => {
+    axios.post("http://localhost:8080/matchwait/insert", result).then((insres) => {
         router.push("/now");
     })
 }
 
 const matchDecline = function (receive) {
+    const userInfo={
+        receiver:receive.receiver,
+        sender:receive.sender
+    }
     event.stopPropagation();
-    axios.delete("http://localhost:8080/wait/decline/"+receive.sender).then((response) => {
+    axios.put("http://localhost:8080/matchwait/delete",userInfo).then((response) => {
         alert("매칭이 거절되었습니다.");
         router.go(0)
     })

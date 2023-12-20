@@ -11,14 +11,14 @@
 	
 	<update id="acceptWait" parameterType="MatchWait">
 		UPDATE MatchWait
-		SET matchWait_match = true
+		SET match = true
 		WHERE receiver=#{receiver} and sender=#{sender}
 	</update>
 	
 	<update id="deleteAllWait" parameterType="MatchWait">
 		UPDATE MatchWait
-		SET matchWait_status = true
-		WHERE receiver=#{receiver} or receiver=#{sender} or sender=#{receiver}
+		SET status = true
+		WHERE receiver=#{receiver} or receiver=#{sender} or sender=#{receiver} or sender=#{sender}
 	</update>
 	
 	<update id="startMatch" parameterType="MatchWait">
@@ -29,23 +29,23 @@
 	
 	<insert id="insertMatch" parameterType="MatchResult">
 		INSERT INTO MatchResult
-		VALUES (0, #{matchId}, #{user1}, #{user2}, now(), null, null)
+		VALUES (0, #{matchId}, #{sender}, #{receiver}, now(), null, null)
 	</insert>
 	
 	<update id="deleteWait" parameterType="MatchWait">
 		UPDATE MatchWait
-		SET matchWait_status = true
+		SET status = true
 		WHERE receiver=#{receiver} and sender=#{sender}
 	</update>
 	
 	<select id="receivedWait" resultType="MatchWait">
 		SELECT * FROM matchWait
-		WHERE receiver=#{loginId}
+		WHERE receiver=#{loginId} and status=false
 	</select>
 	
 	<select id="sentWait" resultType="MatchWait">
 		SELECT * FROM matchWait
-		WHERE sender=#{loginId}
+		WHERE sender=#{loginId} and status=false
 	</select>
 
 </mapper>

@@ -54,7 +54,7 @@
 	</select>
 	
 	<select id="selectUser" resultType="User">
-		SELECT * FROM(SELECT RANK() OVER(ORDER BY rate DESC) AS ranking, id, pass, loginId, phone, address, age, gender, name, rate, status
+		SELECT * FROM(SELECT RANK() OVER(ORDER BY rate DESC) AS ranking, userId, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user where gender=#{gender}) a
         where loginId=#{loginId}
 	</select>

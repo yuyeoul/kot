@@ -4,8 +4,8 @@ import router from '@/router'
 import axios from 'axios'
 
 const REST_USER_API = `http://localhost:8080/user`
-const REST_RESULT_API = `http://localhost:8080/result`
-const REST_WAIT_API = `http://localhost:8080/wait`
+const REST_RESULT_API = `http://localhost:8080/matchresult`
+const REST_WAIT_API = `http://localhost:8080/matchwait`
 
 export const useUserStore = defineStore('user', () => {
 
@@ -38,28 +38,10 @@ export const useUserStore = defineStore('user', () => {
       return;
     }
     oneuser.value = user
-    findMyRanking()
     router.push("/user")
   }
 
-  const findMyRanking = function () {
-    if (oneuser.ranking == null || oneuser.ranking == 0) {
-      if (oneuser.value.gender == "남자") {
-        console.log(male)
-        male.value.forEach(m => {
-          if (m.loginId == oneuser.value.loginId) {
-            oneuser.value.ranking = m.ranking;
-          }
-        })
-      } else {
-        female.value.forEach(f => {
-          if (f.loginId == oneuser.value.loginId) {
-            oneuser.value.ranking = f.ranking;
-          }
-        })
-      }
-    }
-}
+
 
   const searchList = ref([])
   const getSearchResult = function (search) {
@@ -79,7 +61,7 @@ export const useUserStore = defineStore('user', () => {
   const receiverId = ref("");
   const getReceivedRequestList = function () {
     receiverId.value = JSON.parse(localStorage.getItem('loginUser')).loginId
-    axios.get(REST_WAIT_API+"/accept/"+receiverId.value)
+    axios.get(REST_WAIT_API+"/received/"+receiverId.value)
     .then((response) => {
       receivedRequestList.value = response.data
     })
@@ -89,7 +71,7 @@ export const useUserStore = defineStore('user', () => {
   const senderId = ref("");
   const getSentRequestList = function () {
     senderId.value = JSON.parse(localStorage.getItem('loginUser')).loginId
-    axios.get(REST_WAIT_API+"/send/"+senderId.value)
+    axios.get(REST_WAIT_API+"/sent/"+senderId.value)
     .then((response) => {
       sentRequestList.value = response.data
     })
@@ -97,20 +79,12 @@ export const useUserStore = defineStore('user', () => {
 
   const beforeGetOneUser = async function (loginId) {
     await axios.get(REST_USER_API+"/"+loginId).then((response) => {
-      // waitOneUser.value = response.data
-      // getOneUser(waitOneUser);
       oneuser.value = response.data
     })
     findMyRanking()
     router.push("/user")
   }
 
-  // const makeMyPage = async function (loginId) {
-  //   await axios.get(REST_USER_API+"/"+loginId).then((response) => {
-  //     oneuser.value = response.data
-  //   })
-  //   findMyRanking()
-  // }
 
   const myId = ref("");
   const yourId = ref("");
@@ -168,7 +142,7 @@ export const useUserStore = defineStore('user', () => {
   const pastMatching = ref([])
   const getPastMatching = function () {
     myId.value = JSON.parse(localStorage.getItem('loginUser')).loginId
-    axios.get(REST_RESULT_API+"/"+myId.value)
+    axios.get(REST_RESULT_API+"/past/"+myId.value)
     .then((response) => {
       pastMatching.value = response.data
     })
@@ -176,7 +150,7 @@ export const useUserStore = defineStore('user', () => {
 
   const userPastMatching = ref([])
   const getUserPastMatching = function () {
-    axios.get(REST_RESULT_API+"/"+oneuser.value.loginId)
+    axios.get(REST_RESULT_API+"/past/"+oneuser.value.loginId)
     .then((response) => {
       userPastMatching.value = response.data
     })
@@ -195,6 +169,6 @@ export const useUserStore = defineStore('user', () => {
 
   return {login, getLogin, male, getMaleUser, female, getFemaleUser, oneuser, getOneUser, 
     searchList, getSearchResult, receiverId, receivedRequestList, getReceivedRequestList, senderId, sentRequestList, getSentRequestList,
-    myId, yourId, me, you, makeYourId, nowMatching, getNowMatching, pastMatching, getPastMatching, matchUser1, matchUser2, getMatchUser, findMyRanking,
+    myId, yourId, me, you, makeYourId, nowMatching, getNowMatching, pastMatching, getPastMatching, matchUser1, matchUser2, getMatchUser,
     userPastMatching, getUserPastMatching, beforeGetOneUser}
 })

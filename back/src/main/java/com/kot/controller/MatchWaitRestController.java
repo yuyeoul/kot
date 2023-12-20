@@ -41,10 +41,10 @@ public class MatchWaitRestController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@PutMapping("/deleteAll/{loginId}")
+	@PutMapping("/deleteAll")
 	@ApiOperation(value = "남아있는 매칭 모두 삭제")
-	public ResponseEntity<?> deleteAllWait(@PathVariable String loginId) {
-		matchWaitService.deleteAllWait(loginId);
+	public ResponseEntity<?> deleteAllWait(@RequestBody MatchWait wait) {
+		matchWaitService.deleteAllWait(wait);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	

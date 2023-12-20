@@ -96,8 +96,8 @@ const genderCheck = function () {
 
 const amIMatching = ref(false);
 const checkMyMatching = function () {
-    axios.get("http://localhost:8080/user/"+JSON.parse(localStorage.getItem('loginUser')).loginId).then((response) => {
-        amIMatching.value = response.data.status;
+    axios.get("http://localhost:8080/user/selectuser/"+JSON.parse(localStorage.getItem('loginUser')).loginId).then((response) => {
+        amIMatching.value = store.oneuser.status;
     })
 }
 
@@ -112,19 +112,16 @@ const checkIfItsMe = function () {
 
 const goRequest = function () {
     const match = {
+        userId:JSON.parse(localStorage.getItem('loginUser')).userId,
         receiver: store.oneuser.loginId,
         sender: JSON.parse(localStorage.getItem('loginUser')).loginId,
         status: false,
         match: false,
         mdate: new Date(),
-        user1Phone: store.oneuser.phone,
-        user2Phone: JSON.parse(localStorage.getItem('loginUser')).phone,
-        receiverName: store.oneuser.name,
-        senderName: JSON.parse(localStorage.getItem('loginUser')).name,
         
     }
 
-    axios.post("http://localhost:8080/wait", match).then((res) => {
+    axios.post("http://localhost:8080/matchwait/send", match).then((res) => {
 	alert("매칭 신청이 완료되었습니다.");
     router.push("/send");
   });

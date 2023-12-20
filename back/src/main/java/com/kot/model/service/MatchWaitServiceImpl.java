@@ -27,8 +27,8 @@ public class MatchWaitServiceImpl implements MatchWaitService {
 	}
 	
 	@Override
-	public void deleteAllWait(String loginId) {
-		matchWaitDao.deleteAllWait(loginId);
+	public void deleteAllWait(MatchWait wait) {
+		matchWaitDao.deleteAllWait(wait);
 	}
 	
 	@Override
