@@ -11,8 +11,8 @@
 	
 	<update id="acceptWait" parameterType="MatchWait">
 		UPDATE MatchWait
-		SET match = true
-		WHERE receiver=#{receiver} and sender=#{sender}
+		SET `match` = true
+		WHERE receiver=#{receiver} and sender=#{sender} and status=false
 	</update>
 	
 	<update id="deleteAllWait" parameterType="MatchWait">

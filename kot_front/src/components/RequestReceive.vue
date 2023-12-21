@@ -50,11 +50,11 @@ const matchSuccess = function (receive) {
         alert("매칭이 수락되었습니다.");
 
         // delete
-        axios.put("http://localhost:8080/matchwait/deleteAll",match).then((delres) => {
-
-        })
         axios.put("http://localhost:8080/matchwait/start", match).then((ress)=>{
                 
+        })
+        axios.put("http://localhost:8080/matchwait/deleteAll",match).then((delres) => {
+
         })
 
     })

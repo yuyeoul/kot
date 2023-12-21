@@ -16,7 +16,7 @@ public interface MatchWaitDao {
 	int startMatch(MatchWait wait);
 	//4.matchResult table에 insert 해주기
 	int insertMatch(MatchWait wait);
-	//매칭 거절
+	//매칭 거절, 신청한 매칭 취소
 	int deleteWait(MatchWait wait);
 	//들어온 매칭 확인
 	List<MatchWait> receivedWait(String receiver);

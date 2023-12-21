@@ -39,7 +39,7 @@ const router = useRouter()
 const matchDecline = function (send) {
     event.stopPropagation();
 
-    axios.delete("http://localhost:8080/wait/decline/"+send.sender).then((response) => {
+    axios.put("http://localhost:8080/matchwait/delete", send).then((response) => {
         alert("신청이 취소되었습니다.");
         router.push("/")
     })
