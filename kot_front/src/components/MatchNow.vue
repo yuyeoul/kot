@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 id="title">진행중인 매칭 정보</h2>
-        <div v-show="store.nowMatching.id != null">
+        <div v-show="store.nowMatching.matchId != null">
             <div class="players">
             <div class="player col-6">
                 <h3 id="player1-me">나</h3>
@@ -10,7 +10,7 @@
                         <img src="@/assets/profile.png" style="width: 200px; border-radius: 50%;">
                     </div>
                     <div>
-                        <p>이름 : {{ store.me.name }}({{ store.me.id }})</p>
+                        <p>이름 : {{ store.me.user1Name }}({{ store.me.id }})</p>
                         <p>연락처 : {{ store.me.phone }}</p>
                     </div>
                 </div>
@@ -168,7 +168,7 @@ const getOPMatching = function () {
         user1: store.nowMatching.user1,
         user2: store.nowMatching.user2,
     }
-    axios.post("http://localhost:8080/result/past", users).then((res) => {
+    axios.post("http://localhost:8080/matchresult/oppopast", users).then((res) => {
         opponentPastMatching.value = res.data
     })
 }

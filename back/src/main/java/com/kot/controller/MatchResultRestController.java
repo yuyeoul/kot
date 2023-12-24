@@ -56,7 +56,7 @@ public class MatchResultRestController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@GetMapping("/oppopast")
+	@PostMapping("/oppopast")
 	@ApiOperation(value = "상대방과의 과거 전적 출력")
 	public ResponseEntity<?> oppoPastMatching(@RequestBody MatchResult result) {
 		List<MatchResult> list = matchResultService.oppoPastMatching(result);

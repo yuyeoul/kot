@@ -29,7 +29,7 @@
 		WHERE (user1=#{loginId} or user2=#{loginId}) and result IS NULL
 	</update>
 	
-	<select id="oppoPastMatching" resultType="MatchResult">
+	<select id="oppoPastMatching" parameterType="MatchResult">
 		SELECT * FROM MatchResult
 		WHERE (user1=#{user1} and user2=#{user2}) or (user1=#{user2} and user2=#{user1})		
 	</select>

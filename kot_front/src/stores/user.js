@@ -94,7 +94,7 @@ export const useUserStore = defineStore('user', () => {
   const nowMatching = ref({})
   const getNowMatching = async function () {
     myId.value = JSON.parse(localStorage.getItem('loginUser')).loginId
-    await axios.get(REST_RESULT_API+"/now/"+myId.value)
+    await axios.get(REST_RESULT_API+"/"+myId.value)
     .then((response) => {
       nowMatching.value = response.data;
     })
@@ -159,10 +159,10 @@ export const useUserStore = defineStore('user', () => {
   const matchUser1 = ref({})
   const matchUser2 = ref({})
   const getMatchUser = function (loginId1, loginId2) {
-    axios.get(REST_USER_API+"/"+loginId1).then((response) => {
+    axios.get(REST_USER_API+"/selectuser/"+loginId1).then((response) => {
       matchUser1.value = response.data
     })
-    axios.get(REST_USER_API+"/"+loginId2).then((response) => {
+    axios.get(REST_USER_API+"/selectuser/"+loginId2).then((response) => {
       matchUser2.value = response.data
     })
   }

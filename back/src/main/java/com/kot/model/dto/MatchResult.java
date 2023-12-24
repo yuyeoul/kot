@@ -7,22 +7,32 @@ public class MatchResult {
 	private int matchId;
 	private String user1;
 	private String user2;
+	private String user1Name;
 	private Date matchDate;
 	private Date fdate;
 	private String result;
 	
 	public MatchResult() {}
 
-	public MatchResult(int matchingId, int matchId, String user1, String user2, Date matchDate, Date fdate,
+	public MatchResult(int matchingId, int matchId, String user1, String user2,String user1Name, Date matchDate, Date fdate,
 			String result) {
 		super();
 		this.matchingId = matchingId;
+		this.user1Name=user1Name;
 		this.matchId = matchId;
 		this.user1 = user1;
 		this.user2 = user2;
 		this.matchDate = matchDate;
 		this.fdate = fdate;
 		this.result = result;
+	}
+
+	public String getUser1Name() {
+		return user1Name;
+	}
+
+	public void setUser1Name(String user1Name) {
+		this.user1Name = user1Name;
 	}
 
 	public int getMatchingId() {
