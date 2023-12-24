@@ -76,7 +76,7 @@ public class UserRestController {
 		return new ResponseEntity<>(fList, HttpStatus.OK);
 	}
 	
-	@GetMapping("/selectuser/{userId}")
+	@GetMapping("/selectuser/{loginId}")
 	@ApiOperation(value = "유저 상세정보 조회")
 	public ResponseEntity<?> selectUser(@RequestBody User user) {
 		userService.selectUser(user);
