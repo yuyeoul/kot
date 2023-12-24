@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div>
+            <RouterLink to="/board">게시판</RouterLink> | 
+        </div>
         <div class="avobe-ranking-plate">
             <!-- <div class="gender-select nav nav-tabs" v-show="$route.name !== 'search'">
                 <li class="nav-item"><RouterLink to="/" class="nav-link active">남자</RouterLink></li>
