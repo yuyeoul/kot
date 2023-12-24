@@ -22,9 +22,9 @@ public class MatchResultServiceImpl implements MatchResultService {
 	}
 	
 	@Override
-	public MatchResult nowMatch() {
+	public MatchResult nowMatch(String loginId) {
 		// TODO Auto-generated method stub
-		return matchResultDao.nowMatch();
+		return matchResultDao.nowMatch(loginId);
 	}
 
 	@Override

@@ -35,10 +35,10 @@ public class MatchResultRestController {
 		return new ResponseEntity<Integer>(rs, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/{loginId}")
 	@ApiOperation(value = "현재 진행중인 매칭 불러오기")
-	public ResponseEntity<?> nowMatch() {
-		MatchResult result = matchResultService.nowMatch();
+	public ResponseEntity<?> nowMatch(@PathVariable String loginId) {
+		MatchResult result = matchResultService.nowMatch(loginId);
 		return new ResponseEntity<MatchResult>(result, HttpStatus.OK);
 	}
 	
