@@ -4,6 +4,7 @@ CREATE DATABASE kot;
 USE kot;
 
 DROP TABLE IF EXISTS `User`;
+DROP TABLE IF EXISTS `Image`;
 DROP TABLE IF EXISTS `MatchResult`;
 DROP TABLE IF EXISTS `match_wait`;
 DROP TABLE IF EXISTS `Board`;
@@ -46,7 +47,15 @@ INSERT INTO `User`(`name`, `loginId`, `pass`,`email`,`phone`,`gender`,`age`,`add
 ('김병현','bh','1234', 'bh@ssafy.com', '010-6666-3333','남자',29,'경기도 수원시',now(),934,FALSE);
 
 
-
+CREATE TABLE `image` (
+	`imgId` INT PRIMARY KEY AUTO_INCREMENT,
+    `loginId` VARCHAR(30) NOT NULL,
+    `orgTitle` VARCHAR(100) NOT NULL,
+    `newTitle` VARCHAR(100) NOT NULL,
+    `path` VARCHAR(100) NOT NULL,
+    `contentType` VARCHAR(30) NOT NULL,
+    FOREIGN KEY(loginId) REFERENCES user(loginID)
+);
 
 CREATE TABLE `matchwait` (
 	`matchId`	INT PRIMARY KEY AUTO_INCREMENT,

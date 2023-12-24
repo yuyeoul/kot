@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kot.model.dao.ImageDao">
+
+	<insert id="insertImg" parameterType="Image">
+		INSERT INTO image
+		VALUES (0, #{loginId}, #{orgTitle}, #{newTitle}, #{path}, #{contentType})
+	</insert>
+	
+	<update id="updateImg" parameterType="Image">
+		UPDATE image
+		SET orgTitle=#{orgTitle}, newTitle=#{newTitle}, path=#{path}, contentType=#{contentType}
+		WHERE loginId = #{loginId}
+	</update>
+	
+	<select id="readImg" resultType="Image">
+		SELECT *
+		FROM image
+		WHERE loginId = #{loginId}
+	</select>
+
+</mapper>
