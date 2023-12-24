@@ -78,8 +78,8 @@ public class UserRestController {
 	
 	@GetMapping("/selectuser/{userId}")
 	@ApiOperation(value = "유저 상세정보 조회")
-	public ResponseEntity<?> selectUser(@PathVariable String userId) {
-		User user = userService.selectUser(userId);
+	public ResponseEntity<?> selectUser(@RequestBody User user) {
+		userService.selectUser(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	

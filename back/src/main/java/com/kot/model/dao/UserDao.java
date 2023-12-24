@@ -17,9 +17,10 @@ public interface UserDao {
 	List<User> selectMale();
 	List<User> selectFemale();
 	//회원 정보 출력
-	User selectUser(String id);
+	User selectUser(User user);
 	//회원 정보 수정
 	int updatePass(User user);
 	//점수 업데이트
 	int updateRate(User user);
+
 }
