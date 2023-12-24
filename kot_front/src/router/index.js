@@ -14,6 +14,11 @@ import MatchNow from '@/components/MatchNow.vue'
 import MatchPast from '@/components/MatchPast.vue'
 import UpdatePass from '@/components/UpdatePass.vue'
 import BoardView from '@/views/BoardView.vue'
+import BoardList from '@/components/BoardList.vue'
+import BoardDetail from '@/components/BoardDetail.vue'
+import BoardWrite from '@/components/BoardWrite.vue'
+import BoardSearch from '@/components/BoardSearch.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -100,8 +105,31 @@ const router = createRouter({
     {
       path: '/board',
       name: 'board',
-      component: BoardView
-    }
+      component: BoardView,
+      children: [
+        {
+          path: '/board',
+          name: 'boardlist',
+          component: BoardList
+        },
+        {
+          path: '/boarddetail',
+          name: 'boarddetail',
+          component: BoardDetail
+        },
+      
+        {
+          path: '/bsearch/:search',
+          name: 'bsearch',
+          component: BoardSearch
+        }
+      ]
+    },
+    {
+      path: '/boardwrite',
+      name: 'boardwrite',
+      component: BoardWrite
+    },
   ]
 })
 

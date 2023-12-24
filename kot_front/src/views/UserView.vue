@@ -84,7 +84,7 @@ const matchWinner = function (opponent, winner) {
         return "승";
     }
 }
-
+const mystauts=JSON.parse(localStorage.getItem('loginUser')).status
 const genderEqual = ref(false);
 const genderCheck = function () {
     if (store.oneuser.gender == JSON.parse(localStorage.getItem('loginUser')).gender) {
@@ -98,8 +98,8 @@ const amIMatching = ref(false);
 const checkMyMatching = function () {
     axios.get("http://localhost:8080/user/selectuser",{
         params: {
-        loginId:store.oneuser.loginId,
-        gender:store.oneuser.gender
+        loginId:JSON.parse(localStorage.getItem('loginUser')).loginId,
+        gender:JSON.parse(localStorage.getItem('loginUser')).gender
       }
     }).then((response) => {
         amIMatching.value = response.data.status;
