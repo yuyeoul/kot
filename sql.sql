@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS `Reply`;
 CREATE TABLE `User` (
 	`userId`	INT PRIMARY KEY AUTO_INCREMENT,
 	`name`	VARCHAR(30)	NOT NULL,
-	`loginId`	VARCHAR(30)	NOT NULL,
+	`loginId`	VARCHAR(30) UNIQUE NOT NULL,
 	`pass`	VARCHAR(30)	NOT NULL,
 	`email`	VARCHAR(30)	NOT NULL,
 	`phone`	VARCHAR(30)	NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE `User` (
 INSERT INTO `User`(`name`, `loginId`, `pass`,`email`,`phone`,`gender`,`age`,`address`,`regdate`,`rate`,`status`) VALUES
 ('김중광','jg','1234', 'jg@ssafy.com', '010-1111-1111','남자',26,'경기도 화성시',now(),1043,FALSE),
 ('김소광','sg','1234', 'sg@ssafy.com', '010-1111-2222','남자',27,'경기도 화성시',now(),1230,FALSE),
-('김대광','dg','1234', 'dg@ssafy.com', '010-1111-3333','남자',28,'경기도 화성시',now(),1190,FALSE),
+('김대광','dg','1234', 'dg@ssuserafy.com', '010-1111-3333','남자',28,'경기도 화성시',now(),1190,FALSE),
 ('전금평','gp','1234', 'gp@ssafy.com', '010-2222-1111','남자',29,'서울시 양천구',now(),790,FALSE),
 ('전은평','ep','1234', 'ep@ssafy.com', '010-2222-2222','남자',28,'서울시 양천구',now(),936,FALSE),
 ('전동평','dp','1234', 'dp@ssafy.com', '010-2222-3333','남자',27,'서울시 양천구',now(),1341,FALSE),

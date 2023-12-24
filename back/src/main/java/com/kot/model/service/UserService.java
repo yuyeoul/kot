@@ -21,5 +21,5 @@ public interface UserService {
 	//회원 정보 수정
 	void updatePass(User user);
 	//점수 업데이트
-	void updateRate(String id);
+	void updateRate(User user);
 }
