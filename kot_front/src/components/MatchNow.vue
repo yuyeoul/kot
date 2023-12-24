@@ -144,7 +144,7 @@ const sendResult = function () {
     })  
 
     const sendContent = {
-        matchingId: store.nowMatching.matchingId,
+        user1: store.nowMatching.user1,
         fdate: date.value,
         result: result.value,
     }
