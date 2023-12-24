@@ -25,8 +25,8 @@
 	
 	<update id="updateResult" parameterType="MatchResult">
 		UPDATE matchResult
-		SET fdate=#{fdate} and result=#{result}
-		WHERE (user1=#{loginId} or user2=#{loginId}) and result IS NULL
+		SET fdate=#{fdate}, result=#{result}
+		WHERE user1=#{user1} and result IS NULL
 	</update>
 	
 	<select id="oppoPastMatching" parameterType="MatchResult">
