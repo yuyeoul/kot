@@ -7,12 +7,19 @@ import org.springframework.stereotype.Service;
 
 import com.kot.model.dao.MatchResultDao;
 import com.kot.model.dto.MatchResult;
+import com.kot.model.dto.MatchWait;
 
 @Service
 public class MatchResultServiceImpl implements MatchResultService {
 
 	@Autowired
 	private MatchResultDao matchResultDao;
+	
+	
+	@Override
+	public int insertMatch(MatchResult result) {
+		return matchResultDao.insertMatch(result);
+	}
 	
 	@Override
 	public MatchResult nowMatch() {

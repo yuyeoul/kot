@@ -36,11 +36,6 @@ public class MatchWaitServiceImpl implements MatchWaitService {
 		// TODO Auto-generated method stub
 		matchWaitDao.startMatch(wait);
 	}
-	
-	@Override
-	public int insertMatch(MatchWait wait) {
-		return matchWaitDao.insertMatch(wait);
-	}
 
 	@Override
 	public void deleteWait(MatchWait wait) {

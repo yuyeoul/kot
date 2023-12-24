@@ -27,11 +27,6 @@
 		WHERE loginId=#{sender} or loginId=#{receiver}
 	</update>
 	
-	<insert id="insertMatch" parameterType="MatchResult">
-		INSERT INTO MatchResult
-		VALUES (0, #{matchId}, #{sender}, #{receiver}, now(), null, null)
-	</insert>
-	
 	<update id="deleteWait" parameterType="MatchWait">
 		UPDATE MatchWait
 		SET status = true

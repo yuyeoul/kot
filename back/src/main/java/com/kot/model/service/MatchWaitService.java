@@ -14,8 +14,6 @@ public interface MatchWaitService {
 	void deleteAllWait(MatchWait wait);
 	//3.user_status도 true로 만들어주기(이걸 통해 다른 사람이 나한테 매칭을 보내지 못하도록 한다)
 	void startMatch(MatchWait wait);
-	//4.matchResult table에 insert 해주기
-	int insertMatch(MatchWait wait);
 	//매칭 거절, 신청한 매칭 취소
 	void deleteWait(MatchWait wait);
 	//들어온 매칭 확인

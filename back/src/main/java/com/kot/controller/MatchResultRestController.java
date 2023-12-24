@@ -7,12 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kot.model.dto.MatchResult;
+import com.kot.model.dto.MatchWait;
 import com.kot.model.service.MatchResultService;
 
 import io.swagger.annotations.Api;
@@ -25,6 +27,13 @@ public class MatchResultRestController {
 
 	@Autowired
 	private MatchResultService matchResultService;
+	
+	@PostMapping("/insert")
+	@ApiOperation(value = "매칭 시작(matchResult에 insert)")
+	public ResponseEntity<?> insertMatch(@RequestBody MatchResult result) {
+		int rs = matchResultService.insertMatch(result);
+		return new ResponseEntity<Integer>(rs, HttpStatus.CREATED);
+	}
 	
 	@GetMapping("/")
 	@ApiOperation(value = "현재 진행중인 매칭 불러오기")

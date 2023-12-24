@@ -55,14 +55,6 @@ public class MatchWaitRestController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@PostMapping("/insert")
-	@ApiOperation(value = "매칭 시작(matchResult에 insert)")
-	public ResponseEntity<?> insertMatch(@RequestBody MatchWait wait) {
-		int result = matchWaitService.insertMatch(wait);
-		System.out.println("sender : "+wait.getSender());
-		return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
-	}
-	
 	@PutMapping("/delete")
 	@ApiOperation(value = "받은 매칭 거절하기 / 신청한 매칭 취소하기")
 	public ResponseEntity<?> deleteWait(@RequestBody MatchWait wait) {

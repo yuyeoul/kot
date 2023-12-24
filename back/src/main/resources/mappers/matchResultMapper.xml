@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kot.model.dao.MatchResultDao">
 
+	<insert id="insertMatch" parameterType="MatchResult">
+		INSERT INTO MatchResult
+		VALUES (0, #{matchId}, #{user1}, #{user2}, now(), null, null)
+	</insert>
+
 	<select id="nowMatch" resultType="MatchResult">
 		SELECT * FROM matchResult
 		WHERE (user1=#{loginId} or user2=#{loginId}) and result IS NULL

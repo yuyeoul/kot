@@ -67,7 +67,7 @@ const matchSuccess = function (receive) {
        
     }
 
-    axios.post("http://localhost:8080/matchwait/insert", result).then((insres) => {
+    axios.post("http://localhost:8080/matchresult/insert", result).then((insres) => {
         router.push("/now");
     })
 }

@@ -3,9 +3,12 @@ package com.kot.model.dao;
 import java.util.List;
 
 import com.kot.model.dto.MatchResult;
+import com.kot.model.dto.MatchWait;
 
 public interface MatchResultDao {
 	
+	//새로운 매치 정보 insert 해주기
+	int insertMatch(MatchResult result);
 	//현재 매치 정보 불러오기(결과가 null인거)
 	MatchResult nowMatch();
 	//매치 완료
