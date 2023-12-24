@@ -93,7 +93,7 @@ public class UserRestController {
 	@PutMapping("updateRate")
 	@ApiOperation(value = "유저 점수 업데이트")
 	public ResponseEntity<?> updateRate(@RequestBody User user) {
-		userService.updateRate(user.getLoginId());
+		userService.updateRate(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 }
