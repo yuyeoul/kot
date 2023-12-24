@@ -30,7 +30,10 @@
 	</update>
 	
 	<select id="oppoPastMatching" parameterType="MatchResult">
-		SELECT * FROM MatchResult
+		SELECT matchresult.*, user.name AS user1Name, user.phone AS user1Phone, u2.name AS user2Name, u2.phone AS user2Phone
+		FROM matchresult
+		LEFT JOIN user ON matchresult.user1 = user.loginId
+		LEFT JOIN user u2 ON matchresult.user2 = u2.loginId
 		WHERE ((user1=#{user1} and user2=#{user2}) or (user1=#{user2} and user2=#{user1})) AND result IS NOT NULL
 	</select>
 	
