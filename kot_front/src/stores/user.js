@@ -85,6 +85,19 @@ export const useUserStore = defineStore('user', () => {
     router.push("/user")
   }
 
+  const userInfo =function(result){
+    axios.get("http://localhost:8080/user/selectuser",{
+      params: {
+        loginId:result.loginId,
+        gender:result.gender
+      }
+    }).then((response) => {
+      oneuser.value = response.data
+      router.push("/user")
+    })
+   
+}
+
 
   const myId = ref("");
   const yourId = ref("");
@@ -182,5 +195,5 @@ export const useUserStore = defineStore('user', () => {
   return {login, getLogin, male, getMaleUser, female, getFemaleUser, oneuser, getOneUser, 
     searchList, getSearchResult, receiverId, receivedRequestList, getReceivedRequestList, senderId, sentRequestList, getSentRequestList,
     myId, yourId, me, you, makeYourId, nowMatching, getNowMatching, pastMatching, getPastMatching, matchUser1, matchUser2, getMatchUser,
-    userPastMatching, getUserPastMatching, beforeGetOneUser}
+    userPastMatching, getUserPastMatching, beforeGetOneUser,userInfo}
 })

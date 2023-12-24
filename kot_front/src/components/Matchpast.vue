@@ -12,7 +12,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="match in store.pastMatching" :key="match">
-                        <td>{{ formatDate(match.fDate) }}</td>
+                        <td>{{ formatDate(match.fdate) }}</td>
                         <td v-if="checkOpponent(match.user1)">{{ match.user1Name }}({{ match.user1 }})</td>
                         <td v-else>{{ match.user2Name }}({{ match.user2 }})</td>
                         <td v-if="checkOpponent(match.user1)">{{ matchWinner(match.user1, match.result) }}</td>
