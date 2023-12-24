@@ -39,13 +39,19 @@
 	</update>
 	
 	<select id="receivedWait" resultType="MatchWait">
-		SELECT * FROM matchWait
-		WHERE receiver=#{loginId} and status=false
+		SELECT matchwait.*, user.name AS senderName, user.phone as senderPhone, u2.name as receiverName, u2.phone as receiverPhone
+		FROM matchwait
+		LEFT JOIN user ON matchwait.sender = user.loginId
+		LEFT JOIN user u2 ON matchwait.receiver = u2.loginId
+		WHERE receiver=#{loginId} and matchwait.status=false
 	</select>
 	
 	<select id="sentWait" resultType="MatchWait">
-		SELECT * FROM matchWait
-		WHERE sender=#{loginId} and status=false
+		SELECT matchwait.*, user.name AS senderName, user.phone as senderPhone, u2.name as receiverName, u2.phone as receiverPhone
+		FROM matchwait
+		LEFT JOIN user ON matchwait.sender = user.loginId
+		LEFT JOIN user u2 ON matchwait.receiver = u2.loginId
+		WHERE sender=#{loginId} and matchwait.status=false
 	</select>
 
 </mapper>

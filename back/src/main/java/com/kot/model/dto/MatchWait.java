@@ -6,7 +6,11 @@ public class MatchWait {
 	private int matchId;
 	private int userId;
 	private String sender;
+	private String senderName;
+	private String senderPhone;
 	private String receiver;
+	private String receiverName;
+	private String receiverPhone;
 	private boolean status; //
 	private boolean match;
 	private Date mdate;
@@ -14,13 +18,17 @@ public class MatchWait {
 	public MatchWait() {
 	}
 
-	public MatchWait(int matchId, int userId, String sender, String receiver, boolean status, boolean match,
-			Date mdate) {
+	public MatchWait(int matchId, int userId, String sender, String senderName, String senderPhone,
+			String receiver, String receiverName, String receiverPhone, boolean status, boolean match, Date mdate) {
 		super();
 		this.matchId = matchId;
 		this.userId = userId;
 		this.sender = sender;
+		this.senderName = senderName;
+		this.senderPhone = senderPhone;
 		this.receiver = receiver;
+		this.receiverName = receiverName;
+		this.receiverPhone = receiverPhone;
 		this.status = status;
 		this.match = match;
 		this.mdate = mdate;
@@ -50,12 +58,44 @@ public class MatchWait {
 		this.sender = sender;
 	}
 
+	public String getSenderName() {
+		return senderName;
+	}
+
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+	}
+
+	public String getSenderPhone() {
+		return senderPhone;
+	}
+
+	public void setSenderPhone(String senderPhone) {
+		this.senderPhone = senderPhone;
+	}
+
 	public String getReceiver() {
 		return receiver;
 	}
 
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
+	}
+
+	public String getReceiverName() {
+		return receiverName;
+	}
+
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+
+	public String getReceiverPhone() {
+		return receiverPhone;
+	}
+
+	public void setReceiverPhone(String receiverPhone) {
+		this.receiverPhone = receiverPhone;
 	}
 
 	public boolean isStatus() {
@@ -84,7 +124,10 @@ public class MatchWait {
 
 	@Override
 	public String toString() {
-		return "MatchWait [matchId=" + matchId + ", userId=" + userId + ", sender=" + sender + ", receiver=" + receiver
-				+ ", status=" + status + ", match=" + match + ", mdate=" + mdate + "]";
-	};
+		return "MatchWait [matchId=" + matchId + ", userId=" + userId + ", sender=" + sender + ", senderName="
+				+ senderName + ", senderPhone=" + senderPhone + ", receiver=" + receiver + ", receiverName="
+				+ receiverName + ", receiverPhone=" + receiverPhone + ", status=" + status + ", match=" + match
+				+ ", mdate=" + mdate + "]";
+	}
+
 }
