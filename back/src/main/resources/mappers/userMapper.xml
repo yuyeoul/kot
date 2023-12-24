@@ -44,13 +44,13 @@
 	<select id="selectMale" resultType="User">
 		SELECT RANK() OVER(ORDER BY rate DESC) AS ranking, userId, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user
-		WHERE gender="남자"
+		WHERE gender="m"
 	</select>
 	
 	<select id="selectFemale" resultType="User">
 		SELECT RANK() OVER(ORDER BY rate DESC) AS ranking, userId, pass, loginId, phone, address, age, gender, name, rate, status
 		FROM user
-		WHERE gender="여자"
+		WHERE gender="f"
 	</select>
 	
 	<select id="selectUser" resultType="User">

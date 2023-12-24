@@ -96,8 +96,13 @@ const genderCheck = function () {
 
 const amIMatching = ref(false);
 const checkMyMatching = function () {
-    axios.get("http://localhost:8080/user/selectuser/"+JSON.parse(localStorage.getItem('loginUser')).loginId).then((response) => {
-        amIMatching.value = store.oneuser.status;
+    axios.get("http://localhost:8080/user/selectuser",{
+        params: {
+        loginId:store.oneuser.loginId,
+        gender:store.oneuser.gender
+      }
+    }).then((response) => {
+        amIMatching.value = response.data.status;
     })
 }
 

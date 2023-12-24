@@ -12,7 +12,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="result in store.searchList" :key="result" @click="store.getOneUser(result)">
+                    <tr v-for="result in store.searchList" :key="result" @click="userInfo(result)">
                         <td>{{ result.name }}</td>
                         <td>{{ result.rate }}</td>
                         <td>{{ result.gender }}</td>
@@ -32,14 +32,27 @@
 import { useUserStore } from "@/stores/user";
 import { onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
+import axios from 'axios'
+
 
 const store = useUserStore()
 const route = useRoute()
-
+const router = useRouter()
+const userInfo =function(result){
+    axios.get("http://localhost:8080/user/selectuser",{
+      params: {
+        loginId:result.loginId,
+        gender:result.gender
+      }
+    }).then((response) => {
+      store.oneuser.value = response.data
+      router.push("/user")
+    })
+   
+}
 onBeforeMount (() => {
     store.getSearchResult(route.params.search)
-    store.getMaleUser()
-    store.getFemaleUser()
 })
 
 </script>

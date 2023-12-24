@@ -194,7 +194,7 @@ const winCount = computed (() => {
 onBeforeMount(async () => {
     await store.getNowMatching()
     getOPMatching()
-    store.getMatchUser(store.nowMatching.user1, store.nowMatching.user2)
+    store.getMatchUser()
 })
 
 onMounted(() => {

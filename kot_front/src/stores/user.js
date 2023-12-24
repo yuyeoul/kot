@@ -158,11 +158,23 @@ export const useUserStore = defineStore('user', () => {
 
   const matchUser1 = ref({})
   const matchUser2 = ref({})
-  const getMatchUser = function (loginId1, loginId2) {
-    axios.get(REST_USER_API+"/selectuser/"+loginId1).then((response) => {
+  const getMatchUser = function () {
+    
+
+    axios.get(REST_USER_API+"/selectuser",{
+      params: {
+        loginId:nowMatching.value.user1,
+        gender:JSON.parse(localStorage.getItem('loginUser')).gender
+      }
+    }).then((response) => {
       matchUser1.value = response.data
     })
-    axios.get(REST_USER_API+"/selectuser/"+loginId2).then((response) => {
+    axios.get(REST_USER_API+"/selectuser",{
+      params: {
+        loginId:nowMatching.value.user2,
+        gender:JSON.parse(localStorage.getItem('loginUser')).gender
+      }
+    }).then((response) => {
       matchUser2.value = response.data
     })
   }
