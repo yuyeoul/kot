@@ -68,8 +68,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public User updateRate(String id) {
-		return userDao.updateRate(id);
+	public void updateRate(String id) {
+		userDao.updateRate(id);
 	}
 	
 }

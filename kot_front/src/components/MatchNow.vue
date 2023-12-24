@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="pastmatch in opponentPastMatching" :key="pastmatch">
-                            <td>{{ formatDate(pastmatch.fDate) }}</td>
+                            <td>{{ formatDate(pastmatch.fdate) }}</td>
                             <td>{{ matchWinner(store.you.id, pastmatch.result) }}</td>
                         </tr>
                     </tbody>
@@ -136,25 +136,25 @@ const sendResult = function () {
         rate: madeNewRate.rate2,
     }
 
-    axios.put("http://localhost:8080/user/user1", user1data).then((response) => {
+    axios.put("http://localhost:8080/user/updateRate", user1data).then((response) => {
 
     })
-    axios.put("http://localhost:8080/user/user2", user2data).then((response) => {
+    axios.put("http://localhost:8080/user/updateRate", user2data).then((response) => {
 
     })  
 
     const sendContent = {
-        id: store.nowMatching.id,
-        fDate: date.value,
+        user1: store.nowMatching.user1,
+        fdate: date.value,
         result: result.value,
     }
     const users={
         user1:store.nowMatching.user1,
         user2:store.nowMatching.user2,
     }
-    axios.put("http://localhost:8080/result", sendContent).then((res) => {
+    axios.put("http://localhost:8080/matchresult/updateresult", sendContent).then((res) => {
         alert("경기 결과가 저장되었습니다.");
-        axios.put("http://localhost:8080/result/end",users).then((ress)=>{
+        axios.put("http://localhost:8080/matchresult/finish",users).then((ress)=>{
 
         })
         // user 테이블에 접근해서 rate 변경하기 (ELO 써서 해보자)
