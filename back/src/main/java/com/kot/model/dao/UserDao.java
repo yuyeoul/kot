@@ -21,5 +21,5 @@ public interface UserDao {
 	//회원 정보 수정
 	int updatePass(User user);
 	//점수 업데이트
-	User updateRate(String id);
+	int updateRate(String id);
 }
